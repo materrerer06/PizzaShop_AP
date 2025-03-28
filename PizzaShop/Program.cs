@@ -1,8 +1,10 @@
+using PizzaShop.Infrastructure.Extensions;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<PizzaShopDbContext>();
+builder.Services.AddInfrastucture(builder.Configuration);
 
 var app = builder.Build();
 

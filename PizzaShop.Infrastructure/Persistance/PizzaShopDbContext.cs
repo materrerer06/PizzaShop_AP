@@ -9,6 +9,10 @@ namespace PizzaShop.Infrastructure.Persistance
 {
     public class PizzaShopDbContext:DbContext
     {
+        public PizzaShopDbContext(DbContextOptions<PizzaShopDbContext>options):base(options)
+        {
+
+        }
         public DbSet<Domain.entities.Pizza> Pizzas { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
