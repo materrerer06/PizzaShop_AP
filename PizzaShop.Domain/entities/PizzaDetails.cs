@@ -10,5 +10,6 @@ namespace PizzaShop.Domain.entities
     {
         public List<string>? Skladniki { get; set; } = new List<string>();
         public List<string>? Alergeny { get; set; } = new List<string>();
+        public string opis { get; set; }
     }
 }

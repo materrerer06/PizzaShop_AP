@@ -1,13 +1,20 @@
+using PizzaShop.Application.Extensions;
+using PizzaShop.Application.Services;
 using PizzaShop.Infrastructure.Extensions;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddInfrastucture(builder.Configuration);
+builder.Services.AddApplication();
 
 var app = builder.Build();
 
+var scope = app.Services.CreateScope();
+var seeder = scope.ServiceProvider.GetRequiredService<PizzaService>;
+await seeder.seed;
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
