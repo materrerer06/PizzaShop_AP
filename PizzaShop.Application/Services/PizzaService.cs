@@ -4,6 +4,7 @@ using PizzaShop.Application.Pizza;
 using PizzaShop.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +26,12 @@ namespace PizzaShop.Application.Services
             var pizza = _mapper.Map<Domain.entities.Pizza>(pizzaDto);
             pizza.EncodeTitle();
             await _pizzaRepository.Create(pizza);
+        }
+        public async Task<IEnumerable<PizzaDTO>>GetAll()
+        {
+            var pizza = await _pizzaRepository.GetAll();
+            var dtos=_mapper .Map<IEnumerable<PizzaDTO>>(pizza);
+            return pizza;
         }
     }
 }

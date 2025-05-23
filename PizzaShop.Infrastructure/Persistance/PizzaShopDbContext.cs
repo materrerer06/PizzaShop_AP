@@ -18,5 +18,10 @@ namespace PizzaShop.Infrastructure.Persistance
         {
             modelBuilder.Entity<Domain.entities.Pizza>().OwnsOne(c=>c.Details);
         }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocal;Database=PizzaDb;Trusted_Connection=True;");
+
+        }
     }
 }

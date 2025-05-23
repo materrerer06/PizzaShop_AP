@@ -9,5 +9,6 @@ namespace PizzaShop.Domain.Interfaces
     public interface IPizzaRepository
     {
         Task Create(Domain.entities.Pizza pizza);
+        Task<IEnumerable<Domain.entities.Pizza>> GetAll();
     }
 }

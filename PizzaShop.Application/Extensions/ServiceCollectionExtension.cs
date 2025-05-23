@@ -1,6 +1,9 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using FluentValidation;
+using FluentValidation.AspNetCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PizzaShop.Application.Mappings;
+using PizzaShop.Application.Pizza;
 using PizzaShop.Application.Services;
 using System;
 using System.Collections.Generic;
@@ -16,6 +19,9 @@ namespace PizzaShop.Application.Extensions
         {
             services.AddScoped<IPizzaService, PizzaService>() ;
             services.AddAutoMapper(typeof(PizzaMappingProfile));
+            services.AddValidatorsFromAssemblyContaining<PizzaDtoValidator>()
+                .AddFluentValidationAutoValidation()
+                .AddFluentValidationClientsideAdapters();
         }
     }
 }
