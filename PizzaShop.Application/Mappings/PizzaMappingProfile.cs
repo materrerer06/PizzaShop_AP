@@ -13,10 +13,16 @@ namespace PizzaShop.Application.Mappings
     {
         public PizzaMappingProfile()
         {
-            CreateMap<PizzaDTO, Domain.entities.Pizza>().ForMember(dest => dest.Details, opt => opt.MapFrom(src => new PizzaDetails()
+            CreateMap<PizzaDTO, Domain.entities.Pizza>().ForMember(dest => dest.Details, opt => opt.MapFrom(src => MapPizzaDetails(src)));
+        }
+
+        private static PizzaDetails MapPizzaDetails(PizzaDTO src)
+        {
+            return new PizzaDetails
             {
-                Skladniki = src.opis;
-            }));
+                Skladniki = src.Skladniki != null ? src.Skladniki.Select(s => s.Trim()).ToList() : null,
+                opis = src.Opis // Poprawiono nazwę właściwości na "Opis"
+            };
         }
     }
 }

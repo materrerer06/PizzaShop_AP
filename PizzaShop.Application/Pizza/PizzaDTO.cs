@@ -8,9 +8,11 @@ namespace PizzaShop.Application.Pizza
 {
     public class PizzaDTO
     {
-        public string? Skladniki { get; set; } = default;
-        public string? opis { get; set; } = default;
-
-        
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public string? Description { get; set; }
+        public decimal Price { get; set; }
+        public List<string>? Skladniki { get; set; }
+        public string? Opis { get; set; }
     }
 }

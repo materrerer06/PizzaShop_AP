@@ -14,6 +14,6 @@ namespace PizzaShop.Domain.entities
         public decimal Price { get; set; }
         public PizzaDetails Details { get; set; } = new PizzaDetails()!;
         public string EncodedTitle { get; private set; } = default!;
-    public void EncodeTitle() => EncodedTitle = Title.ToLower().Replace(" ", "-");
+        public void EncodeTitle() { /* implementacja */ }
     }
 }

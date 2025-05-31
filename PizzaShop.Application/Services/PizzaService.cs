@@ -27,11 +27,11 @@ namespace PizzaShop.Application.Services
             pizza.EncodeTitle();
             await _pizzaRepository.Create(pizza);
         }
-        public async Task<IEnumerable<PizzaDTO>>GetAll()
+        public async Task<IEnumerable<PizzaDTO>> GetAll()
         {
-            var pizza = await _pizzaRepository.GetAll();
-            var dtos=_mapper .Map<IEnumerable<PizzaDTO>>(pizza);
-            return pizza;
+            var pizzas = await _pizzaRepository.GetAll();
+            var dtos = _mapper.Map<IEnumerable<PizzaDTO>>(pizzas);
+            return dtos;
         }
     }
 }
